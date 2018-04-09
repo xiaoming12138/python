@@ -9,7 +9,7 @@ from application import application
 
 from tornado.options import define, options
 
-define("port", default=6789, help="run on the given port", type=int)
+define("port", default=5678, help="run on the given port", type=int)
 
 
 def main():

@@ -7,13 +7,13 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<h2>列表</h2>
+<h2>删除</h2>
 </body>
 <script>
     $(document).ready(function () {
             $.ajax({
                 type:'post',
-                url:'http://10.100.25.143:5678/list',
+                url:'http://10.100.25.143:5678/deleteweek',
                 dataType:'json',
                 success:function (res) {
                     console.log(res)

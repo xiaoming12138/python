@@ -24,11 +24,12 @@
             var data_data = {
                 'content':content,
                 'startdate':startdate,
-                'enddate':enddate
+                'enddate':enddate,
+                'userid':6
             }
             $.ajax({
                 type:'post',
-                url:'http://10.100.25.143:6789/addweek',
+                url:'http://10.100.25.143:5678/addweek',
                 dataType:'json',
                 data:data_data,
                 success:function (res) {

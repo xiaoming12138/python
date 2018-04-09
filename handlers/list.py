@@ -34,16 +34,17 @@ class ListHandler(tornado.web.RequestHandler):
         # for results in res:
         #     print(results)
         #     mogores = results
-        res=collectionList.find().sort("createtime",pymongo.DESCENDING)
+        res=collectionList.find({"isdelete":0}).sort("createtime",pymongo.DESCENDING)
         listdata=list(res)
         print(listdata)
+        print(collectionList.find({"isdelete":0}).count())
 
         if listdata != None:
             result = {}
             result["data"] = listdata
             result["status"] = "true"
             result["code"] = 200
-            result["message"] = "登录成功"
+            result["message"] = "成功"
             self.write(json_util.dumps(result))
         else:
             result = {}

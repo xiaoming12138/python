@@ -13,12 +13,17 @@ from handlers.list import ListHandler
 from handlers.addweek import AddweekHandler
 from handlers.editweek import EditweekHandler
 from handlers.deleteweek import DeleteweekHandler
-
+from handlers.detailweek import DetailweekHandler
+from handlers.myweek import MyweekHandler
+from handlers.weekpage import WeekpageHandler
 url = [
     (r'/', IndexHandler),
     (r'/list', ListHandler),
     (r'/addweek', AddweekHandler),
     (r'/editweek', EditweekHandler),
     (r'/deleteweek', DeleteweekHandler),
-    # (r'/detailweek', DeleteweekHandler),
+    (r'/detailweek', DetailweekHandler),
+    (r'/myweek', MyweekHandler),
+    (r'/weekpage', WeekpageHandler),
+
 ]
