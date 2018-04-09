@@ -30,24 +30,32 @@ class IndexHandler(tornado.web.RequestHandler):
         # re = db.userdb.find()
         # for results in re:
         #     print(results)
-        res = db.userdb.find_one({"email": user,"password":  hashlib.md5(password).hexdigest()})["userid"]
-        # print(user)
-        # print(password)
-        # print(hashlib.md5(password).hexdigest())
-        #listdata = list(res)
-        print(res)
+        if user != '' and password !='':
+            res = db.userdb.find_one({"email": user,"password":  hashlib.md5(password).hexdigest()})["userid"]
+            # print(user)
+            # print(password)
+            # print(hashlib.md5(password).hexdigest())
+            #listdata = list(res)
+            print(res)
 
-        if res != None:
-            result = {}
-            result["data"] = {"userid":res}
-            result["status"] = "true"
-            result["code"] = 200
-            result["message"] = "登录成功"
-            self.write(json_encode(result))
+            if res != None:
+                result = {}
+                result["data"] = {"userid":res}
+                result["status"] = "true"
+                result["code"] = 200
+                result["message"] = "登录成功"
+                self.write(json_encode(result))
+            else:
+                result = {}
+                result["data"] = user
+                result["status"] = "flase"
+                result["code"] = 400
+                result["message"] = "用户名密码不一致"
+                self.write(json_encode(result))
         else:
             result = {}
-            result["data"] = user
-            result["status"] = "flase"
+            result["data"] = "数据接受不全"
+            result["status"] = "true"
             result["code"] = 400
-            result["message"] = "用户名密码不一致"
+            result["message"] = "数据接受不全"
             self.write(json_encode(result))

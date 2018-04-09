@@ -37,25 +37,47 @@ class AddweekHandler(tornado.web.RequestHandler):
         content = self.get_body_argument("content")
         startdate = str(self.get_body_argument("startdate"))
         enddate = str(self.get_body_argument("enddate"))
-        userid = self.get_body_argument("userid")
+        userid = int(self.get_body_argument("userid"))
         createtime=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        res=collectionList.insert({"content": content, "startdate": startdate, "enddate": enddate, "userid": userid, "createtime": createtime})
-        print(res)
+        if content != '' and startdate != '' and enddate != '' and userid != '' and createtime != '':
+            res=collectionList.insert({"content": content, "startdate": startdate, "enddate": enddate, "userid": userid, "createtime": createtime,"isdelete": 0})
+            print(res)
+            if res != None:
+                result = {}
+                result["data"] = "添加成功"
+                result["status"] = "true"
+                result["code"] = 200
+                result["message"] = "添加成功"
+                self.write(json_util.dumps(result))
+            else:
+                result = {}
+                result["data"] = ''
+                result["status"] = "flase"
+                result["code"] = 400
+                result["message"] = "添加失败"
+                self.write(json_util.dumps(result))
+        else:
+            result = {}
+            result["data"] = "数据接受不全"
+            result["status"] = "true"
+            result["code"] = 400
+            result["message"] = "数据接受不全"
+            self.write(json_util.dumps(result))
         #res=collectionList.find().sort("userid",pymongo.DESCENDING)
         # listdata=list(res)
         # print(listdata)
 
-        if res != None:
-            result = {}
-            result["data"] = res
-            result["status"] = "true"
-            result["code"] = 200
-            result["message"] = "添加成功"
-            self.write(json_util.dumps(result))
-        else:
-            result = {}
-            result["data"] = ''
-            result["status"] = "flase"
-            result["code"] = 400
-            result["message"] = "添加失败"
-            self.write(json_util.dumps(result))
+        # if res != None:
+        #     result = {}
+        #     result["data"] = "添加成功"
+        #     result["status"] = "true"
+        #     result["code"] = 200
+        #     result["message"] = "添加成功"
+        #     self.write(json_util.dumps(result))
+        # else:
+        #     result = {}
+        #     result["data"] = ''
+        #     result["status"] = "flase"
+        #     result["code"] = 400
+        #     result["message"] = "添加失败"
+        #     self.write(json_util.dumps(result))
