@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Learning Python</title>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<h2>Login</h2>
+</body>
+<script>
+    $(document).ready(function () {
+            $.ajax({
+                type:'post',
+                url:'http://10.100.25.143:6789/list',
+                dataType:'json',
+                success:function (res) {
+                    console.log(res)
+                },
+                error:function (e) {
+                    console.log(e);
+                }
+            })
+    });
+</script>
