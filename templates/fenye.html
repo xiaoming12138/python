@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style >
+        .pager a{
+         display: inline-block;
+         padding:2px;
+         margin:5px;
+         background-color:red;
+         }
+    </style>
+    <style>
+        .pager a.active{
+        background-color:white;
+        color:blue;
+        }
+    </style>
+</head>
+<body>
+     <form method="post" action="/login/{{current}}">
+         <input type="text" name="username"/>
+         <input type="text" name="email"/>
+         <input type="submit" value="submit"/>
+     </form>
+     <h>show dataes as follow:</h>
+     <table border="1">
+         <thead>
+             <tr>
+                 <th>user</th>
+                 <th>email</th>
+             </tr>
+
+         </thead>
+         <tbody>
+            {% for line in list_info %}
+              <tr>
+                  <td>{{line["username"]}}</td>
+                  <td>{{line["email"]}}</td>
+              </tr>
+            {% end %}
+         </tbody>
+     </table>
+     <div class = "pager">
+         {% raw page2 %}
+     </div>
+</body>
+</html>
