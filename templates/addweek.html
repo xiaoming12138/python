@@ -22,18 +22,21 @@
             var startdate = $("#startdate").val();
             var enddate = $("#enddate").val();
             var data_data = {
+                'action':"addweekly_reports",
                 'content':content,
                 'startdate':startdate,
                 'enddate':enddate,
-                'userid':6
+                'userid':8
             }
             $.ajax({
                 type:'post',
-                url:'http://10.100.25.143:5678/addweek',
+                url:'http://10.100.25.143:5678/weekly_reports',
                 dataType:'json',
-                data:data_data,
+                data:JSON.stringify(data_data),
                 success:function (res) {
                     console.log(res.data)
+                    console.log(typeof res.data)
+                    console.log(JSON.parse(res.data).$oid)
                 },
                 error:function (e) {
                     console.log(e);
@@ -41,4 +44,33 @@
             })
         });
     });
+
+   /* $(document).ready(function () {
+        $("#login").click(function () {
+            var content = $("#content").val();
+            var startdate = $("#startdate").val();
+            var enddate = $("#enddate").val();
+            var data_data = {
+                'content':content,
+                'startdate':startdate,
+                'enddate':enddate,
+                'userid':8
+            }
+            $.ajax({
+                type:'post',
+                url:'http://10.100.25.143:5678/addweek',
+                dataType:'json',
+                data:data_data,
+                success:function (res) {
+                    console.log(JSON.parse(res.data))
+                    console.log(typeof res.data)
+                    console.log(JSON.parse(res.data).$oid)
+                    console.log(res.data.$oid)
+                },
+                error:function (e) {
+                    console.log(e);
+                }
+            })
+        });
+    });*/
 </script>

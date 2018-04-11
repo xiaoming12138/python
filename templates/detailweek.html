@@ -7,15 +7,18 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<h2>列表</h2>
+<h2>周报详情</h2>
 </body>
 <script>
     $(document).ready(function () {
+        var data_data = {
+                '_id':'5aca0ecdf8b6f73b627af4b6'
+            }
             $.ajax({
                 type:'get',
                 url:'http://10.100.25.143:5678/weekly_reports',
                 dataType:'json',
-                 data:data_data,
+                data:data_data,
                 success:function (res) {
                     console.log(res)
                 },

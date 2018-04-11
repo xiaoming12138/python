@@ -7,15 +7,18 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<h2>列表</h2>
+<h2>我的列表</h2>
 </body>
 <script>
     $(document).ready(function () {
+        var data_data = {
+                'userid':2
+            }
             $.ajax({
                 type:'get',
                 url:'http://10.100.25.143:5678/weekly_reports',
                 dataType:'json',
-                 data:data_data,
+                data:data_data,
                 success:function (res) {
                     console.log(res)
                 },

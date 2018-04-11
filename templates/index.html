@@ -20,14 +20,16 @@
             var user = $("#username").val();
             var pwd = $("#password").val();
             var data_data = {
+                'action':'login',
                 'user':user,
                 'password':pwd
             }
             $.ajax({
                 type:'post',
-                url:'http://10.100.25.143:5678',
+                url:'http://10.100.25.143:5678/login',
                 dataType:'json',
-                data:data_data,
+                data:JSON.stringify(data_data),
+              /*  contentType:"application/json",*/
                 success:function (res) {
                     console.log(res.data)
                 },
